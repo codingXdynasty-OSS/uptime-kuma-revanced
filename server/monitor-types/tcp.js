@@ -286,7 +286,7 @@ class TCPMonitorType extends MonitorType {
      * @returns {Promise<void>}
      */
     async checkTlsAlert(monitor, heartbeat, expectedTlsAlert) {
-        const timeout = monitor.timeout * 1000 || 30000;
+        const timeout = monitor.timeout * 1000 || 40000;
         const startTime = Date.now();
 
         const options = {

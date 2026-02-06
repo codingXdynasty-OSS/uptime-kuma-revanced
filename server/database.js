@@ -249,7 +249,7 @@ class Database {
         let mariadbPoolConfig = {
             min: 0,
             max: parsedMaxPoolConnections,
-            idleTimeoutMillis: 30000,
+            idleTimeoutMillis: 40000,
         };
 
         log.info("db", `Database Type: ${dbConfig.type}`);

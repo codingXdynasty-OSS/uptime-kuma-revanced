@@ -46,7 +46,7 @@ describe("StatusPage", () => {
     });
 
     describe("renderRSS()", () => {
-        const MOCK_FEED_URL = "http://localhost:3001/status/test";
+        const MOCK_FEED_URL = "http://localhost:4001/status/test";
 
         test("pubDate uses UTC timezone for heartbeat.time without timezone info", async () => {
             const mockStatusPage = {

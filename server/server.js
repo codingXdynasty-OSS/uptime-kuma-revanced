@@ -188,6 +188,7 @@ const { resetChrome } = require("./monitor-types/real-browser-monitor-type");
 const { EmbeddedMariaDB } = require("./embedded-mariadb");
 const { SetupDatabase } = require("./setup-database");
 const { chartSocketHandler } = require("./socket-handlers/chart-socket-handler");
+const { initConfigFileMonitors, stopFileWatcher } = require("./config-file-monitors");
 
 app.use(express.json());
 
@@ -801,6 +802,11 @@ let needSetup = false;
                     throw new Error("Permission denied.");
                 }
 
+                // Prevent editing config-managed monitors via UI
+                if (bean.config_managed) {
+                    throw new Error("This monitor is managed via config file and cannot be edited through the UI. Please modify the monitors.yaml file instead.");
+                }
+
                 // Check if Parent is Descendant (would cause endless loop)
                 if (monitor.parent !== null) {
                     const childIDs = await Monitor.getAllChildrenIDs(monitor.id);
@@ -1106,6 +1112,11 @@ let needSetup = false;
 
                 // Check if this is a group monitor
                 const monitor = await R.findOne("monitor", " id = ? AND user_id = ? ", [monitorID, socket.userID]);
+
+                // Prevent deleting config-managed monitors via UI
+                if (monitor && monitor.config_managed) {
+                    throw new Error("This monitor is managed via config file and cannot be deleted through the UI. Please remove it from the monitors.yaml file instead.");
+                }
 
                 // Log with context about deletion type
                 if (monitor && monitor.type === "group") {
@@ -1738,6 +1749,15 @@ let needSetup = false;
         }
         await startMonitors();
 
+        // Initialize config file monitors (load monitors from data/monitors.yaml)
+        // Get the first user as the owner for config-managed monitors
+        const firstUser = await R.findOne("user", " active = 1 ORDER BY id ASC ");
+        if (firstUser) {
+            await initConfigFileMonitors(firstUser.id, server);
+        } else {
+            log.info("server", "No active user found, config file monitors will not be initialized");
+        }
+
         // Put this here. Start background jobs after the db and server is ready to prevent clear up during db migration.
         await initBackgroundJobs();
 
@@ -1958,6 +1978,7 @@ async function shutdownFunction(signal) {
     stopBackgroundJobs();
     await cloudflaredStop();
     Settings.stopCacheCleaner();
+    stopFileWatcher();
 }
 
 /**
@@ -1970,7 +1991,7 @@ function finalFunction() {
 
 gracefulShutdown(server.httpServer, {
     signals: "SIGINT SIGTERM",
-    timeout: 30000, // timeout: 30 secs
+    timeout: 40000, // timeout: 30 secs
     development: false, // not in dev mode
     forceExit: true, // triggers process.exit() at the end of shutdown process
     onShutdown: shutdownFunction, // shutdown function (async) - e.g. for cleanup DB, ...

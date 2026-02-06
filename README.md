@@ -46,7 +46,7 @@ curl -o compose.yaml https://raw.githubusercontent.com/louislam/uptime-kuma/mast
 docker compose up -d
 ```
 
-Uptime Kuma is now running on all network interfaces (e.g. http://localhost:3001 or http://your-ip:3001).
+Uptime Kuma is now running on all network interfaces (e.g. http://localhost:4001 or http://your-ip:4001).
 
 > [!WARNING]
 > File Systems like **NFS** (Network File System) are **NOT** supported. Please map to a local directory or volume.
@@ -54,15 +54,15 @@ Uptime Kuma is now running on all network interfaces (e.g. http://localhost:3001
 ### 🐳 Docker Command
 
 ```bash
-docker run -d --restart=always -p 3001:3001 -v uptime-kuma:/app/data --name uptime-kuma louislam/uptime-kuma:2
+docker run -d --restart=always -p 4001:4001 -v uptime-kuma:/app/data --name uptime-kuma louislam/uptime-kuma:2
 ```
 
-Uptime Kuma is now running on all network interfaces (e.g. http://localhost:3001 or http://your-ip:3001).
+Uptime Kuma is now running on all network interfaces (e.g. http://localhost:4001 or http://your-ip:4001).
 
 If you want to limit exposure to localhost only:
 
 ```bash
-docker run ... -p 127.0.0.1:3001:3001 ...
+docker run ... -p 127.0.0.1:4001:4001 ...
 ```
 
 ### 💪🏻 Non-Docker
@@ -94,7 +94,7 @@ npm install pm2 -g && pm2 install pm2-logrotate
 pm2 start server/server.js --name uptime-kuma
 ```
 
-Uptime Kuma is now running on all network interfaces (e.g. http://localhost:3001 or http://your-ip:3001).
+Uptime Kuma is now running on all network interfaces (e.g. http://localhost:4001 or http://your-ip:4001).
 
 More useful PM2 Commands
 

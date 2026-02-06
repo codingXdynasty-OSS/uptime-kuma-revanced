@@ -6,6 +6,7 @@ const { games } = require("gamedig");
 const { testChrome } = require("../monitor-types/real-browser-monitor-type");
 const fsAsync = require("fs").promises;
 const path = require("path");
+const { syncConfigMonitors, configFileExists, getConfigFilePath } = require("../config-file-monitors");
 
 /**
  * Get a game list via GameDig
@@ -139,6 +140,50 @@ module.exports.generalSocketHandler = (socket, server) => {
             server.disconnectAllSocketClients(socket.userID, socket.id);
         } catch (e) {
             log.warn("disconnectAllSocketClients", e.message);
+        }
+    });
+
+    // Get config file monitors status
+    socket.on("getConfigFileStatus", async (callback) => {
+        try {
+            checkLogin(socket);
+            callback({
+                ok: true,
+                exists: configFileExists(),
+                path: getConfigFilePath(),
+            });
+        } catch (e) {
+            callback({
+                ok: false,
+                msg: e.message,
+            });
+        }
+    });
+
+    // Manually sync config file monitors
+    socket.on("syncConfigMonitors", async (callback) => {
+        try {
+            checkLogin(socket);
+            const result = await syncConfigMonitors(socket.userID, server);
+            
+            // Refresh monitor list for the user after sync
+            await server.sendMonitorList(socket);
+            
+            callback({
+                ok: result.errors.length === 0,
+                added: result.added,
+                updated: result.updated,
+                removed: result.removed,
+                errors: result.errors,
+                msg: result.errors.length > 0 
+                    ? `Sync completed with ${result.errors.length} errors` 
+                    : `Sync complete: Added ${result.added}, Updated ${result.updated}, Removed ${result.removed}`,
+            });
+        } catch (e) {
+            callback({
+                ok: false,
+                msg: e.message,
+            });
         }
     });
 };

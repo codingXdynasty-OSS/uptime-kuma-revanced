@@ -51,7 +51,7 @@
 ### Development Workflow
 
 ```bash
-npm run dev  # Starts frontend (port 3000) and backend (port 3001)
+npm run dev  # Starts frontend (port 4000) and backend (port 4001)
 ```
 
 ## Project Architecture
@@ -123,7 +123,7 @@ npm run dev  # Starts frontend (port 3000) and backend (port 3001)
 2. **TypeScript errors**: `npm run tsc` shows 1400+ errors - ignore them, they don't affect builds
 3. **Stylelint warnings**: Deprecation warnings are expected, ignore them
 4. **Test failures**: Always run `npm run build` before running tests
-5. **Port conflicts**: Dev server uses ports 3000 and 3001
+5. **Port conflicts**: Dev server uses ports 4000 and 4001
 6. **First run**: Server shows "db-config.json not found" - this is expected, starts setup wizard
 
 ## Translations

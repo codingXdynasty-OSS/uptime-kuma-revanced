@@ -217,6 +217,9 @@ class Monitor extends BeanModel {
             saveResponse: this.getSaveResponse(),
             saveErrorResponse: this.getSaveErrorResponse(),
             responseMaxLength: this.response_max_length ?? RESPONSE_BODY_LENGTH_DEFAULT,
+
+            // config file management
+            configManaged: Boolean(this.config_managed),
         };
 
         if (includeSensitiveData) {
