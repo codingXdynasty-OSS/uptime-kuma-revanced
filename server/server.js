@@ -1736,7 +1736,9 @@ let needSetup = false;
             if (user) {
                 log.info("auth", `Auto-login: logging in as '${user.username}' (created from env vars)`);
                 await afterLogin(socket, user);
-                socket.emit("autoLogin", user.username);
+                // Send real JWT token so session persists on reload
+                const token = User.createJWT(user, server.jwtSecret);
+                socket.emit("autoLogin", { username: user.username, token });
                 // Clear the flag so subsequent connections require normal login
                 delete server.pendingAutoLoginUserId;
             } else {
@@ -1746,7 +1748,7 @@ let needSetup = false;
             log.info("auth", "Disabled Auth: auto login to admin");
             const user = await R.findOne("user");
             await afterLogin(socket, user);
-            socket.emit("autoLogin", user ? user.username : null);
+            socket.emit("autoLogin", { username: user ? user.username : null, token: null });
         } else {
             socket.emit("loginRequired");
             log.debug("auth", "need auth");

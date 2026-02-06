@@ -127,13 +127,20 @@ export default {
                 this.$router.push("/setup");
             });
 
-            socket.on("autoLogin", (username) => {
+            socket.on("autoLogin", (data) => {
                 this.loggedIn = true;
-                this.storage().token = "autoLogin";
-                this.socket.token = "autoLogin";
                 this.allowLoginDialog = false;
-                if (username) {
-                    this.username = username;
+                // Use real JWT token if provided, otherwise fall back to "autoLogin"
+                if (data && data.token) {
+                    this.storage().token = data.token;
+                    this.socket.token = data.token;
+                    this.username = this.getJWTPayload()?.username;
+                } else {
+                    this.storage().token = "autoLogin";
+                    this.socket.token = "autoLogin";
+                    if (data && data.username) {
+                        this.username = data.username;
+                    }
                 }
             });
 
