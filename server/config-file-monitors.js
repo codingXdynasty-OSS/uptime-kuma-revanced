@@ -34,7 +34,6 @@ const path = require("path");
 const yaml = require("js-yaml");
 const { R } = require("redbean-node");
 const { log } = require("../src/util");
-const Database = require("./database");
 
 /**
  * Default values for monitor fields
