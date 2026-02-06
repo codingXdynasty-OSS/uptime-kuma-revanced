@@ -12,6 +12,6 @@ services:
       - uptime_kuma_revanced_ADMIN_PASSWORD=${uptime_kuma_revanced_ADMIN_PASSWORD}
     volumes:
       - ./data:/app/data
-      - ./data/monitors.yaml:/app/data/monitors.yaml
+      - ./config/monitors.yaml:/app/config/monitors.yaml
     ports:
       - "4001:4001"

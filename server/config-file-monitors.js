@@ -111,7 +111,19 @@ let debounceTimer = null;
  */
 function getConfigFilePath() {
     if (!configFilePath) {
-        configFilePath = path.join(Database.dataDir, "monitors.yaml");
+        // 1. Check environment variable
+        if (process.env.uptime_kuma_revanced_MONITORS_YAML_PATH) {
+            configFilePath = process.env.uptime_kuma_revanced_MONITORS_YAML_PATH;
+        } else {
+            // 2. Check in ./config/ (not ignored by git, good for cloud builds)
+            const configPath = path.join(process.cwd(), "config", "monitors.yaml");
+            if (fs.existsSync(configPath)) {
+                configFilePath = configPath;
+            } else {
+                // 3. Fallback to ./data/ (ignored by git, usually for persistent volumes)
+                configFilePath = path.join(Database.dataDir, "monitors.yaml");
+            }
+        }
     }
     return configFilePath;
 }

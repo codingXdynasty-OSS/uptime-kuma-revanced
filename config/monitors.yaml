@@ -1,0 +1,42 @@
+# Uptime Kuma Revanced Config File Monitors
+# 
+# Monitors defined here will be automatically synced with the database.
+# Changes to this file will be detected and applied automatically.
+#
+# IMPORTANT: Monitors created via this config file are marked as "config_managed"
+# and will be controlled exclusively by this file. To edit them, modify this file.
+
+monitors:
+  # HTTP Monitor - Google
+  - name: "Google"
+    type: "http"
+    url: "https://google.com"
+    interval: 60
+    retryInterval: 60
+    maxretries: 3
+    active: true
+
+  # HTTP Monitor - GitHub
+  - name: "GitHub"
+    type: "http"
+    url: "https://github.com"
+    interval: 60
+    retryInterval: 60
+    maxretries: 2
+    active: true
+
+  # DNS Monitor - Cloudflare DNS
+  - name: "Cloudflare DNS"
+    type: "dns"
+    hostname: "cloudflare.com"
+    dns_resolve_server: "1.1.1.1"
+    dns_resolve_type: "A"
+    interval: 300
+    active: true
+
+  # Ping Monitor - Google DNS
+  - name: "Google DNS Ping"
+    type: "ping"
+    hostname: "8.8.8.8"
+    interval: 60
+    active: true
