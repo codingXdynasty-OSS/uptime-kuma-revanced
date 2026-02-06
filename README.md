@@ -2,6 +2,9 @@
     <img src="./public/icon.svg" width="128" alt="Uptime Kuma Revanced Logo" />
 </div>
 
+> [!CAUTION]
+> **DEVELOPMENT ONLY**: This version of Uptime Kuma Revanced is intended for development and testing purposes only. It is **NOT** recommended for production environments.
+
 # Uptime Kuma Revanced
 
 Uptime Kuma Revanced is an easy-to-use self-hosted monitoring tool.
