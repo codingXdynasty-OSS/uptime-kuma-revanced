@@ -37,7 +37,7 @@ monitors:
   # HTTP Monitor - Spotify
   - name: "Spotify"
     type: "http"
-    hostname: "https://open.spotify.com"
+    url: "https://open.spotify.com"
     interval: 60
     retryInterval: 60
     maxretries: 2
