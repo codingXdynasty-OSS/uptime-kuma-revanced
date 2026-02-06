@@ -111,18 +111,12 @@ let debounceTimer = null;
  */
 function getConfigFilePath() {
     if (!configFilePath) {
-        // 1. Check environment variable
+        // Only use the config file if explicitly pointed to by environment variable
         if (process.env.uptime_kuma_revanced_MONITORS_YAML_PATH) {
             configFilePath = process.env.uptime_kuma_revanced_MONITORS_YAML_PATH;
         } else {
-            // 2. Check in ./config/ (not ignored by git, good for cloud builds)
-            const configPath = path.join(process.cwd(), "config", "monitors.yaml");
-            if (fs.existsSync(configPath)) {
-                configFilePath = configPath;
-            } else {
-                // 3. Fallback to ./data/ (ignored by git, usually for persistent volumes)
-                configFilePath = path.join(Database.dataDir, "monitors.yaml");
-            }
+            // Return null to indicate no config file should be used
+            return null;
         }
     }
     return configFilePath;
@@ -133,7 +127,8 @@ function getConfigFilePath() {
  * @returns {boolean} True if config file exists
  */
 function configFileExists() {
-    return fs.existsSync(getConfigFilePath());
+    const filePath = getConfigFilePath();
+    return filePath && fs.existsSync(filePath);
 }
 
 /**
@@ -143,8 +138,10 @@ function configFileExists() {
 function readConfigFile() {
     const filePath = getConfigFilePath();
     
-    if (!fs.existsSync(filePath)) {
-        log.debug("config-file", "Config file not found at: " + filePath);
+    if (!filePath || !fs.existsSync(filePath)) {
+        if (filePath) {
+            log.debug("config-file", "Config file not found at: " + filePath);
+        }
         return null;
     }
     
@@ -409,6 +406,10 @@ async function syncConfigMonitors(userId, server) {
 function startFileWatcher(userId, server) {
     const filePath = getConfigFilePath();
     
+    if (!filePath) {
+        return;
+    }
+    
     if (fileWatcher) {
         fileWatcher.close();
         fileWatcher = null;
@@ -510,6 +511,9 @@ function stopFileWatcher() {
  */
 function createSampleConfigFile() {
     const filePath = getConfigFilePath();
+    if (!filePath) {
+        return;
+    }
     const samplePath = filePath + ".sample";
     
     if (fs.existsSync(samplePath)) {
