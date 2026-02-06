@@ -1895,10 +1895,11 @@ async function initDatabase(testMode = false) {
     // If there is no record in user table, it is a new Uptime Kuma Revanced instance, need to setup
     if ((await R.knex("user").count("id as count").first()).count === 0) {
         // Check if admin credentials are provided via environment variables
+        const autoCreateAdmin = process.env.uptime_kuma_revanced_AUTO_CREATE_ADMIN === "1" || process.env.uptime_kuma_revanced_AUTO_CREATE_ADMIN === "true";
         const adminUser = process.env.uptime_kuma_revanced_ADMIN_USER;
         const adminPass = process.env.uptime_kuma_revanced_ADMIN_PASSWORD;
 
-        if (adminUser && adminPass) {
+        if (autoCreateAdmin && adminUser && adminPass) {
             log.info("server", "Creating admin user from environment variables");
             
             // Validate password strength
@@ -1913,9 +1914,14 @@ async function initDatabase(testMode = false) {
                 log.info("server", `Admin user '${adminUser}' created successfully`);
                 needSetup = false;
 
-                // Set flag for auto-login on first connection
-                server.pendingAutoLoginUserId = user.id;
-                log.info("server", "Auto-login pending for first connection");
+                // Check if auto-login is enabled (defaults to true if not specified)
+                const autoLoginEnabled = process.env.uptime_kuma_revanced_AUTO_LOGIN !== "0" && process.env.uptime_kuma_revanced_AUTO_LOGIN !== "false";
+                
+                if (autoLoginEnabled) {
+                    // Set flag for auto-login on first connection
+                    server.pendingAutoLoginUserId = user.id;
+                    log.info("server", "Auto-login pending for first connection");
+                }
 
                 // Initialize config file monitors now that we have a user
                 try {
@@ -1926,6 +1932,9 @@ async function initDatabase(testMode = false) {
                 }
             }
         } else {
+            if (autoCreateAdmin) {
+                log.info("server", "AUTO_CREATE_ADMIN is enabled but credentials are missing");
+            }
             log.info("server", "No user, need setup");
             needSetup = true;
         }
