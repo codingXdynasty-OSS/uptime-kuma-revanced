@@ -44,12 +44,6 @@ monitors:
     interval: 60
     active: true
 
-  - name: "Claude AI"
-    type: "http"
-    url: "https://claude.ai"
-    interval: 60
-    active: true
-
   - name: "Cox"
     type: "http"
     url: "https://www.cox.com"
@@ -80,21 +74,9 @@ monitors:
     interval: 60
     active: true
 
-  - name: "DoorDash"
-    type: "http"
-    url: "https://www.doordash.com"
-    interval: 60
-    active: true
-
   - name: "Facebook"
     type: "http"
     url: "https://www.facebook.com"
-    interval: 60
-    active: true
-
-  - name: "Fortnite"
-    type: "http"
-    url: "https://www.fortnite.com"
     interval: 60
     active: true
 
@@ -140,21 +122,9 @@ monitors:
     interval: 60
     active: true
 
-  - name: "Mediacom"
-    type: "http"
-    url: "https://mediacomcable.com"
-    interval: 60
-    active: true
-
   - name: "Microsoft 365"
     type: "http"
     url: "https://www.office.com"
-    interval: 60
-    active: true
-
-  - name: "Microsoft Outlook"
-    type: "http"
-    url: "https://outlook.live.com"
     interval: 60
     active: true
 
@@ -167,12 +137,6 @@ monitors:
   - name: "Netflix"
     type: "http"
     url: "https://www.netflix.com"
-    interval: 60
-    active: true
-
-  - name: "OpenAI"
-    type: "http"
-    url: "https://openai.com"
     interval: 60
     active: true
 
@@ -212,12 +176,6 @@ monitors:
     interval: 60
     active: true
 
-  - name: "Spectrum"
-    type: "http"
-    url: "https://www.spectrum.com"
-    interval: 60
-    active: true
-
   - name: "Spotify"
     type: "http"
     url: "https://open.spotify.com"
@@ -227,12 +185,6 @@ monitors:
   - name: "Steam"
     type: "http"
     url: "https://store.steampowered.com"
-    interval: 60
-    active: true
-
-  - name: "T-Mobile"
-    type: "http"
-    url: "https://www.t-mobile.com"
     interval: 60
     active: true
 
@@ -281,11 +233,5 @@ monitors:
   - name: "Xbox Network"
     type: "http"
     url: "https://www.xbox.com"
-    interval: 60
-    active: true
-
-  - name: "Xfinity"
-    type: "http"
-    url: "https://www.xfinity.com"
     interval: 60
     active: true
