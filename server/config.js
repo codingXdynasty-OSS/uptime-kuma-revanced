@@ -9,7 +9,7 @@ const args = typeof process !== "undefined" ? require("args-parser")(process.arg
 let hostEnv = isFreeBSD ? null : process.env.HOST;
 const hostname = args.host || process.env.uptime_kuma_revanced_HOST || hostEnv;
 
-const port = [args.port, process.env.uptime_kuma_revanced_PORT, process.env.PORT, 4001]
+const port = [args.port, process.env.uptime_kuma_revanced_PORT, process.env.PORT, 3001]
     .map((portValue) => parseInt(portValue))
     .find((portValue) => !isNaN(portValue));
 

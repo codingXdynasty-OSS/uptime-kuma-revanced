@@ -7,38 +7,285 @@
 # and will be controlled exclusively by this file. To edit them, modify this file.
 
 monitors:
-  # HTTP Monitor - Google
+  # Extracted from Downdetector Landing Page
+  - name: "ARC Raiders"
+    type: "http"
+    url: "https://www.arcraiders.com"
+    interval: 60
+    active: true
+
+  - name: "AT&T"
+    type: "http"
+    url: "https://www.att.com"
+    interval: 60
+    active: true
+
+  - name: "Amazon"
+    type: "http"
+    url: "https://www.amazon.com"
+    interval: 60
+    active: true
+
+  - name: "Astound Broadbank"
+    type: "http"
+    url: "https://www.astound.com"
+    interval: 60
+    active: true
+
+  - name: "Blizzard Battle.net"
+    type: "http"
+    url: "https://www.blizzard.com"
+    interval: 60
+    active: true
+
+  - name: "Call of Duty"
+    type: "http"
+    url: "https://www.callofduty.com"
+    interval: 60
+    active: true
+
+  - name: "Claude AI"
+    type: "http"
+    url: "https://claude.ai"
+    interval: 60
+    active: true
+
+  - name: "Cox"
+    type: "http"
+    url: "https://www.cox.com"
+    interval: 60
+    active: true
+
+  - name: "Cricket Wireless"
+    type: "http"
+    url: "https://www.cricketwireless.com"
+    interval: 60
+    active: true
+
+  - name: "Discord"
+    type: "http"
+    url: "https://discord.com"
+    interval: 60
+    active: true
+
+  - name: "Disney+"
+    type: "http"
+    url: "https://www.disneyplus.com"
+    interval: 60
+    active: true
+
+  - name: "DocuSign"
+    type: "http"
+    url: "https://www.docusign.com"
+    interval: 60
+    active: true
+
+  - name: "DoorDash"
+    type: "http"
+    url: "https://www.doordash.com"
+    interval: 60
+    active: true
+
+  - name: "Facebook"
+    type: "http"
+    url: "https://www.facebook.com"
+    interval: 60
+    active: true
+
+  - name: "Fortnite"
+    type: "http"
+    url: "https://www.fortnite.com"
+    interval: 60
+    active: true
+
+  - name: "Gmail"
+    type: "http"
+    url: "https://mail.google.com"
+    interval: 60
+    active: true
+
   - name: "Google"
     type: "http"
-    url: "https://google.com"
+    url: "https://www.google.com"
     interval: 60
-    retryInterval: 60
-    maxretries: 3
     active: true
 
-  # HTTP Monitor - GitHub
-  - name: "GitHub"
+  - name: "HBO Max"
     type: "http"
-    url: "https://github.com"
+    url: "https://www.max.com"
     interval: 60
-    retryInterval: 60
-    maxretries: 2
     active: true
 
-  # DNS Monitor - Cloudflare DNS
-  - name: "Cloudflare DNS"
-    type: "dns"
-    hostname: "cloudflare.com"
-    dns_resolve_server: "1.1.1.1"
-    dns_resolve_type: "A"
-    interval: 300
+  - name: "Hulu"
+    type: "http"
+    url: "https://www.hulu.com"
+    interval: 60
     active: true
 
-  # HTTP Monitor - Spotify
+  - name: "Instagram"
+    type: "http"
+    url: "https://www.instagram.com"
+    interval: 60
+    active: true
+
+  - name: "League of Legends"
+    type: "http"
+    url: "https://www.leagueoflegends.com"
+    interval: 60
+    active: true
+
+  - name: "Letterboxd"
+    type: "http"
+    url: "https://letterboxd.com"
+    interval: 60
+    active: true
+
+  - name: "Mediacom"
+    type: "http"
+    url: "https://mediacomcable.com"
+    interval: 60
+    active: true
+
+  - name: "Microsoft 365"
+    type: "http"
+    url: "https://www.office.com"
+    interval: 60
+    active: true
+
+  - name: "Microsoft Outlook"
+    type: "http"
+    url: "https://outlook.live.com"
+    interval: 60
+    active: true
+
+  - name: "Minecraft"
+    type: "http"
+    url: "https://www.minecraft.net"
+    interval: 60
+    active: true
+
+  - name: "Netflix"
+    type: "http"
+    url: "https://www.netflix.com"
+    interval: 60
+    active: true
+
+  - name: "OpenAI"
+    type: "http"
+    url: "https://openai.com"
+    interval: 60
+    active: true
+
+  - name: "Optimum / Cablevision"
+    type: "http"
+    url: "https://www.optimum.net"
+    interval: 60
+    active: true
+
+  - name: "Peacock"
+    type: "http"
+    url: "https://www.peacocktv.com"
+    interval: 60
+    active: true
+
+  - name: "PlayStation Network"
+    type: "http"
+    url: "https://store.playstation.com"
+    interval: 60
+    active: true
+
+  - name: "Reddit"
+    type: "http"
+    url: "https://www.reddit.com"
+    interval: 60
+    active: true
+
+  - name: "Roblox"
+    type: "http"
+    url: "https://www.roblox.com"
+    interval: 60
+    active: true
+
+  - name: "Scratch"
+    type: "http"
+    url: "https://scratch.mit.edu"
+    interval: 60
+    active: true
+
+  - name: "Spectrum"
+    type: "http"
+    url: "https://www.spectrum.com"
+    interval: 60
+    active: true
+
   - name: "Spotify"
     type: "http"
     url: "https://open.spotify.com"
     interval: 60
-    retryInterval: 60
-    maxretries: 2
+    active: true
+
+  - name: "Steam"
+    type: "http"
+    url: "https://store.steampowered.com"
+    interval: 60
+    active: true
+
+  - name: "T-Mobile"
+    type: "http"
+    url: "https://www.t-mobile.com"
+    interval: 60
+    active: true
+
+  - name: "TikTok"
+    type: "http"
+    url: "https://www.tiktok.com"
+    interval: 60
+    active: true
+
+  - name: "Tumblr"
+    type: "http"
+    url: "https://www.tumblr.com"
+    interval: 60
+    active: true
+
+  - name: "Verizon"
+    type: "http"
+    url: "https://www.verizon.com"
+    interval: 60
+    active: true
+
+  - name: "WOW!"
+    type: "http"
+    url: "https://www.wowway.com"
+    interval: 60
+    active: true
+
+  - name: "Workday"
+    type: "http"
+    url: "https://www.workday.com"
+    interval: 60
+    active: true
+
+  - name: "World of Warcraft"
+    type: "http"
+    url: "https://worldofwarcraft.com"
+    interval: 60
+    active: true
+
+  - name: "X (Twitter)"
+    type: "http"
+    url: "https://twitter.com"
+    interval: 60
+    active: true
+
+  - name: "Xbox Network"
+    type: "http"
+    url: "https://www.xbox.com"
+    interval: 60
+    active: true
+
+  - name: "Xfinity"
+    type: "http"
+    url: "https://www.xfinity.com"
+    interval: 60
     active: true

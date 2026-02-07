@@ -4,7 +4,7 @@
         <input
             id="waha-api-url"
             v-model="$parent.notification.wahaApiUrl"
-            placeholder="http://localhost:4000/"
+            placeholder="http://localhost:3000/"
             type="url"
             class="form-control"
             required

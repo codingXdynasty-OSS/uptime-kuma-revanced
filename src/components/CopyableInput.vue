@@ -113,7 +113,7 @@ export default {
             clearTimeout(timeout);
             timeout = setTimeout(() => {
                 this.icon = "copy";
-            }, 4000);
+            }, 3000);
 
             // navigator clipboard api needs a secure context (https)
             // For http, use the text area method (else part)

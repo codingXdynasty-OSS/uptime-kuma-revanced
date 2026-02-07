@@ -2057,7 +2057,7 @@ function finalFunction() {
 
 gracefulShutdown(server.httpServer, {
     signals: "SIGINT SIGTERM",
-    timeout: 40000, // timeout: 30 secs
+    timeout: 30000, // timeout: 30 secs
     development: false, // not in dev mode
     forceExit: true, // triggers process.exit() at the end of shutdown process
     onShutdown: shutdownFunction, // shutdown function (async) - e.g. for cleanup DB, ...

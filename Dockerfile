@@ -37,5 +37,19 @@ RUN npm run build
 # Expose the application port
 EXPOSE 3001
 
+# Default Environment Variables represented as ARGs
+ARG uptime_kuma_revanced_AUTO_CREATE_ADMIN=1
+ARG uptime_kuma_revanced_ADMIN_USER=test
+ARG uptime_kuma_revanced_ADMIN_PASSWORD=Test123456!
+ARG uptime_kuma_revanced_AUTO_LOGIN=1
+ARG uptime_kuma_revanced_MONITORS_YAML_PATH=config/monitors.yaml
+ARG uptime_kuma_revanced_DB_TYPE=mariadb
+ARG uptime_kuma_revanced_DB_HOST=mariadb
+ARG uptime_kuma_revanced_DB_PORT=3306
+ARG uptime_kuma_revanced_DB_NAME=kuma
+ARG uptime_kuma_revanced_DB_USER=kuma
+ARG uptime_kuma_revanced_DB_PASSWORD=kuma
+ARG uptime_kuma_revanced_DB_SSL=false
+
 # Command to start the application
 CMD ["npm", "run", "start-server"]

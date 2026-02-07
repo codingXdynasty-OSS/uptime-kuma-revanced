@@ -1,0 +1,97 @@
+# Uptime Kuma Revanced Config File Monitors
+# 
+# Place this file at: data/monitors.yaml
+# Monitors defined here will be automatically synced with the database.
+# Changes to this file will be detected and applied automatically.
+#
+# IMPORTANT: Monitors created via this config file are marked as "config_managed"
+# and will be controlled exclusively by this file. To edit them, modify this file.
+
+monitors:
+  # HTTP Monitor Example
+  - name: "Google"
+    type: "http"
+    url: "https://google.com"
+    interval: 60
+    retryInterval: 60
+    maxretries: 3
+    active: true
+    # Optional fields:
+    # method: "GET"
+    # timeout: 48
+    # ignoreTls: false
+    # maxredirects: 10
+    # accepted_statuscodes:
+    #   - "200-299"
+    # headers: '{"Content-Type": "application/json"}'
+    # body: '{"key": "value"}'
+    
+  # Keyword Monitor Example  
+  # - name: "Example Keyword Check"
+  #   type: "keyword"
+  #   url: "https://example.com/status"
+  #   keyword: "All systems operational"
+  #   interval: 60
+    
+  # Ping Monitor Example
+  # - name: "Example Ping"
+  #   type: "ping"
+  #   hostname: "example.com"
+  #   interval: 60
+  
+  # TCP Port Monitor Example
+  # - name: "My Service Port"
+  #   type: "port"
+  #   hostname: "localhost"
+  #   port: 8080
+  #   interval: 60
+  
+  # DNS Monitor Example
+  # - name: "DNS Check"
+  #   type: "dns"
+  #   hostname: "example.com"
+  #   dns_resolve_server: "8.8.8.8"
+  #   dns_resolve_type: "A"
+  #   interval: 300
+  
+  # Docker Container Monitor Example
+  # - name: "My Container"
+  #   type: "docker"
+  #   docker_container: "container_name"
+  #   docker_host: 1  # Docker host ID from UI
+  #   interval: 60
+  
+  # Push Monitor Example (for external heartbeats)
+  # - name: "Backup Job"
+  #   type: "push"
+  #   interval: 86400  # Expected heartbeat every 24 hours
+  
+  # MySQL Monitor Example
+  # - name: "MySQL Database"
+  #   type: "mysql"
+  #   databaseConnectionString: "mysql://user:password@host:3306/database"
+  #   interval: 60
+  #   databaseQuery: "SELECT 1"
+  
+  # PostgreSQL Monitor Example
+  # - name: "PostgreSQL Database"
+  #   type: "postgres"
+  #   databaseConnectionString: "postgres://user:password@host:5432/database"
+  #   interval: 60
+  
+  # Redis Monitor Example
+  # - name: "Redis Cache"
+  #   type: "redis"
+  #   databaseConnectionString: "redis://localhost:6379"
+  #   interval: 60
+  
+  # MongoDB Monitor Example
+  # - name: "MongoDB"
+  #   type: "mongodb"
+  #   databaseConnectionString: "mongodb://localhost:27017"
+  #   interval: 60
+
+# Available monitor types: 
+# http, keyword, json-query, ping, port, dns, push, steam, gamedig, mqtt,
+# sqlserver, postgres, mysql, mongodb, radius, redis, group, docker, grpc,
+# real-browser, snmp, smtp, rabbitmq

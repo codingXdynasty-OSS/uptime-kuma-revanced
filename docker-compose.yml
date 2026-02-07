@@ -1,0 +1,53 @@
+services:
+  uptime-kuma-revanced:
+    build:
+      context: .
+    image: uptime-kuma-revanced:latest
+    container_name: uptime-kuma-revanced
+    ports:
+      - "${UPTIME_KUMA_PORT}:3001"
+    environment:
+      # Ensure runtime env vars match overrides if needed
+      - uptime_kuma_revanced_AUTO_CREATE_ADMIN=${uptime_kuma_revanced_AUTO_CREATE_ADMIN}
+      - uptime_kuma_revanced_ADMIN_USER=${uptime_kuma_revanced_ADMIN_USER}
+      - uptime_kuma_revanced_ADMIN_PASSWORD=${uptime_kuma_revanced_ADMIN_PASSWORD}
+      - uptime_kuma_revanced_AUTO_LOGIN=${uptime_kuma_revanced_AUTO_LOGIN}
+      - uptime_kuma_revanced_MONITORS_YAML_PATH=${uptime_kuma_revanced_MONITORS_YAML_PATH}
+      - uptime_kuma_revanced_DB_TYPE=${uptime_kuma_revanced_DB_TYPE}
+      - uptime_kuma_revanced_DB_HOST=${uptime_kuma_revanced_DB_HOST}
+      - uptime_kuma_revanced_DB_PORT=${uptime_kuma_revanced_DB_PORT}
+      - uptime_kuma_revanced_DB_NAME=${uptime_kuma_revanced_DB_NAME}
+      - uptime_kuma_revanced_DB_USER=${uptime_kuma_revanced_DB_USER}
+      - uptime_kuma_revanced_DB_PASSWORD=${uptime_kuma_revanced_DB_PASSWORD}
+      - uptime_kuma_revanced_DB_SSL=${uptime_kuma_revanced_DB_SSL}
+      - uptime_kuma_revanced_IS_CONTAINER=1
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config
+    depends_on:
+      mariadb:
+        condition: service_healthy
+    restart: always
+
+  mariadb:
+    image: mariadb:latest
+    container_name: uptime-kuma-mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${uptime_kuma_revanced_DB_NAME}
+      - MYSQL_USER=${uptime_kuma_revanced_DB_USER}
+      - MYSQL_PASSWORD=${uptime_kuma_revanced_DB_PASSWORD}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    restart: always
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - mariadb-admin ping -h localhost -u "$$MYSQL_USER" -p"$$MYSQL_PASSWORD"
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  mariadb-data:

@@ -111,7 +111,7 @@ export default {
             if (env === "development" && isDevContainer()) {
                 url = protocol + getDevContainerServerHostname();
             } else if (env === "development" || localStorage.dev === "dev") {
-                url = protocol + location.hostname + ":4001";
+                url = protocol + location.hostname + ":3001";
             } else {
                 // Connect to the current url
                 url = undefined;

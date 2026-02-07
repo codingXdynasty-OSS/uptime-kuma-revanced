@@ -17,7 +17,7 @@ const WS_ERR_CODE = {
     1013: "Try Again Later",
     1014: "Bad Gateway",
     1015: "TLS Handshake Failed",
-    4000: "Unauthorized",
+    3000: "Unauthorized",
     3003: "Forbidden",
     3008: "Timeout",
 };
