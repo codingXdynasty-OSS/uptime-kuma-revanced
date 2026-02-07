@@ -26,6 +26,12 @@ monitors:
     interval: 60
     active: true
 
+  - name: "Astound Broadbank"
+    type: "http"
+    url: "https://www.astound.com"
+    interval: 60
+    active: true
+
   - name: "Blizzard Battle.net"
     type: "http"
     url: "https://www.blizzard.com"
@@ -35,6 +41,12 @@ monitors:
   - name: "Call of Duty"
     type: "http"
     url: "https://www.callofduty.com"
+    interval: 60
+    active: true
+
+  - name: "Claude AI"
+    type: "http"
+    url: "https://claude.ai"
     interval: 60
     active: true
 
@@ -50,9 +62,27 @@ monitors:
     interval: 60
     active: true
 
+  - name: "Discord"
+    type: "http"
+    url: "https://discord.com"
+    interval: 60
+    active: true
+
   - name: "Disney+"
     type: "http"
     url: "https://www.disneyplus.com"
+    interval: 60
+    active: true
+
+  - name: "DocuSign"
+    type: "http"
+    url: "https://www.docusign.com"
+    interval: 60
+    active: true
+
+  - name: "DoorDash"
+    type: "http"
+    url: "https://www.doordash.com"
     interval: 60
     active: true
 
@@ -62,9 +92,27 @@ monitors:
     interval: 60
     active: true
 
+  - name: "Fortnite"
+    type: "http"
+    url: "https://www.fortnite.com"
+    interval: 60
+    active: true
+
+  - name: "Gmail"
+    type: "http"
+    url: "https://mail.google.com"
+    interval: 60
+    active: true
+
   - name: "Google"
     type: "http"
     url: "https://www.google.com"
+    interval: 60
+    active: true
+
+  - name: "HBO Max"
+    type: "http"
+    url: "https://www.max.com"
     interval: 60
     active: true
 
@@ -86,9 +134,51 @@ monitors:
     interval: 60
     active: true
 
+  - name: "Letterboxd"
+    type: "http"
+    url: "https://letterboxd.com"
+    interval: 60
+    active: true
+
+  - name: "Mediacom"
+    type: "http"
+    url: "https://mediacomcable.com"
+    interval: 60
+    active: true
+
+  - name: "Microsoft 365"
+    type: "http"
+    url: "https://www.office.com"
+    interval: 60
+    active: true
+
+  - name: "Microsoft Outlook"
+    type: "http"
+    url: "https://outlook.live.com"
+    interval: 60
+    active: true
+
   - name: "Minecraft"
     type: "http"
     url: "https://www.minecraft.net"
+    interval: 60
+    active: true
+
+  - name: "Netflix"
+    type: "http"
+    url: "https://www.netflix.com"
+    interval: 60
+    active: true
+
+  - name: "OpenAI"
+    type: "http"
+    url: "https://openai.com"
+    interval: 60
+    active: true
+
+  - name: "Optimum / Cablevision"
+    type: "http"
+    url: "https://www.optimum.net"
     interval: 60
     active: true
 
@@ -104,6 +194,12 @@ monitors:
     interval: 60
     active: true
 
+  - name: "Reddit"
+    type: "http"
+    url: "https://www.reddit.com"
+    interval: 60
+    active: true
+
   - name: "Roblox"
     type: "http"
     url: "https://www.roblox.com"
@@ -116,6 +212,12 @@ monitors:
     interval: 60
     active: true
 
+  - name: "Spectrum"
+    type: "http"
+    url: "https://www.spectrum.com"
+    interval: 60
+    active: true
+
   - name: "Spotify"
     type: "http"
     url: "https://open.spotify.com"
@@ -125,6 +227,12 @@ monitors:
   - name: "Steam"
     type: "http"
     url: "https://store.steampowered.com"
+    interval: 60
+    active: true
+
+  - name: "T-Mobile"
+    type: "http"
+    url: "https://www.t-mobile.com"
     interval: 60
     active: true
 
@@ -146,6 +254,18 @@ monitors:
     interval: 60
     active: true
 
+  - name: "WOW!"
+    type: "http"
+    url: "https://www.wowway.com"
+    interval: 60
+    active: true
+
+  - name: "Workday"
+    type: "http"
+    url: "https://www.workday.com"
+    interval: 60
+    active: true
+
   - name: "World of Warcraft"
     type: "http"
     url: "https://worldofwarcraft.com"
@@ -161,5 +281,11 @@ monitors:
   - name: "Xbox Network"
     type: "http"
     url: "https://www.xbox.com"
+    interval: 60
+    active: true
+
+  - name: "Xfinity"
+    type: "http"
+    url: "https://www.xfinity.com"
     interval: 60
     active: true
