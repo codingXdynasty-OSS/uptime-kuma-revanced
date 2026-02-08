@@ -5,7 +5,8 @@ services:
     image: uptime-kuma-revanced:latest
     container_name: uptime-kuma-revanced
     ports:
-      - "${UPTIME_KUMA_PORT}:3001"
+      - "127.0.0.1:${UPTIME_KUMA_PORT}:3001"
+      - "100.108.133.13:${UPTIME_KUMA_PORT}:3001"
     environment:
       # Ensure runtime env vars match overrides if needed
       - uptime_kuma_revanced_AUTO_CREATE_ADMIN=${uptime_kuma_revanced_AUTO_CREATE_ADMIN}
@@ -20,7 +21,6 @@ services:
       - uptime_kuma_revanced_DB_USER=${uptime_kuma_revanced_DB_USER}
       - uptime_kuma_revanced_DB_PASSWORD=${uptime_kuma_revanced_DB_PASSWORD}
       - uptime_kuma_revanced_DB_SSL=${uptime_kuma_revanced_DB_SSL}
-      - uptime_kuma_revanced_IS_CONTAINER=${uptime_kuma_revanced_IS_CONTAINER}
     volumes:
       - ./data:/app/data
       - ./config:/app/config
